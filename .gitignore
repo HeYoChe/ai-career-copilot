@@ -1,0 +1,19 @@
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# OS
+.DS_Store
+
+# Streamlit：主题配置保留，密钥与个人数据绝不提交
+.streamlit/secrets.toml
+
+# 个人隐私：简历 PDF / 测试文档不要提交
+*.pdf
+sample_data/*.docx
+
+# 本地开发辅助目录（编辑器 / AI 助手缓存），不属于项目源码
+.workbuddy/
