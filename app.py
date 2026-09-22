@@ -408,7 +408,10 @@ with tab_match:
             st.write("未发现明显的 ATS 问题。")
 
     with card("✏️ 快捷改写模板（离线）"):
-        st.caption("这些是句式模板，用来提醒你怎么写，不是替你编经历。")
+        st.caption(
+            "这些是句式模板，用来提醒你怎么写，不是替你编经历。"
+            "**句式语言跟随你的简历原文**（中文简历配英文 JD 时仍然是中文模板）。"
+        )
         for tip in suggest_bullets("目标岗位", jd_text, analysis["bullets"], list(gap.get("missing_list", []))):  # type: ignore[arg-type]
             st.markdown(f"- {tip}")
 
