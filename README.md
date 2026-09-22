@@ -156,11 +156,29 @@ EMBED_MODEL=all-MiniLM-L6-v2
 
 ## 📦 部署（Streamlit Community Cloud）
 
+全程在浏览器里操作，不需要命令行：
+
 1. 把项目推到一个**公开** GitHub 仓库（确认 `.env`、简历 PDF 没有提交）；
-2. 打开 https://share.streamlit.io ，连接 GitHub 并选择该仓库；
-3. Main file path 填 `app.py`；
-4. 在 **Advanced settings → Secrets** 里填 `OPENAI_API_KEY`（可选）；
-5. Deploy。
+2. 打开 https://share.streamlit.io ，用 GitHub 账号登录并选择该仓库；
+3. **Main file path** 填 `app.py`；
+4. 展开 **Advanced settings → Secrets**，填入 Key（不需要 AI 功能可留空）：
+
+   ```toml
+   # 以 DeepSeek 为例；换其他 OpenAI 兼容平台时改后两行即可
+   OPENAI_API_KEY = "sk-你的Key"
+   OPENAI_BASE_URL = "https://api.deepseek.com/v1"
+   OPENAI_MODEL = "deepseek-chat"
+   ```
+
+5. 点 **Deploy**，等待 3～10 分钟构建。
+
+**部署后注意**
+
+- 三个变量要一起填。只填 `OPENAI_API_KEY` 而不填 `OPENAI_BASE_URL`，请求会发往 OpenAI 官方接口，
+  鉴权失败后**静默回退基础模式** —— 表现是「界面没有报错，但 AI 功能没反应」。
+- 不填任何 Secret 也能正常部署，匹配度 / 技能缺口 / ATS / 规则版面试题全部可用。
+- 免费实例内存 1GB，首次点击「开始分析」需下载 embedding 模型（约 90MB），等待 1～2 分钟后恢复正常。
+- 简历和 JD 为中文时，建议把 `EMBED_MODEL` 设为 `paraphrase-multilingual-MiniLM-L12-v2`（约 470MB，首次加载较慢）。
 
 ---
 
