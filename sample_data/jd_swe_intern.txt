@@ -1,0 +1,14 @@
+
+Software Engineer Intern (Summer)
+
+Responsibilities:
+- Build and ship features in collaboration with senior engineers
+- Write clean, tested code in Python/JavaScript/TypeScript
+- Contribute to React front-end and RESTful APIs (Node.js)
+- Work with cloud services (AWS/GCP), CI/CD, and GitHub
+
+Qualifications:
+- Experience with data structures & algorithms, OOP
+- Exposure to React.js, Node.js, SQL, and REST
+- Familiarity with Docker, AWS (EC2/S3/Lambda), or GCP
+- Strong communication and problem-solving
