@@ -39,3 +39,72 @@ button[data-baseweb="tab"] {
 code {
     color: #7EE787 !important;
 }
+
+/* ---------------------------------------------------------------
+   深色主题兜底（重要，别删）
+
+   背景说明：页面/侧边栏/卡片之所以是深色，是靠 app.py 注入的 CSS 画的；
+   而输入框、上传区、次级按钮的配色**不由 CSS 决定，来自 Streamlit 主题**。
+   Streamlit 只读取「启动时工作目录下」的 .streamlit/config.toml —— 这个文件
+   一旦没被读到（例如云端仓库漏传了隐藏目录 .streamlit），基础色就会退回
+   默认的浅色主题，结果就是现在这样：
+       背景是黑的，输入框 / 上传框 / 按钮却是白的（#F0F2F6）。
+
+   下面这段让控件不再依赖主题文件，任何环境下都是深色。
+   --------------------------------------------------------------- */
+
+/* 输入框 / 文本域 / 下拉框 */
+div[data-baseweb="input"],
+div[data-baseweb="textarea"],
+div[data-baseweb="select"] > div,
+div[data-testid="stTextInput"] input,
+div[data-testid="stTextArea"] textarea,
+div[data-testid="stNumberInput"] input {
+    background-color: #0D1117 !important;
+    color: #E6EDF3 !important;
+    border-color: rgba(255, 255, 255, .14) !important;
+}
+
+::placeholder {
+    color: rgba(230, 237, 243, .45) !important;
+}
+
+/* 文件上传区（拖拽框） */
+section[data-testid="stFileUploaderDropzone"],
+div[data-testid="stFileUploaderDropzone"] {
+    background-color: #161B22 !important;
+    border: 1px dashed rgba(255, 255, 255, .18) !important;
+    color: #E6EDF3 !important;
+}
+
+section[data-testid="stFileUploaderDropzone"] button,
+div[data-testid="stFileUploaderDropzone"] button {
+    background-color: #21262D !important;
+    color: #E6EDF3 !important;
+    border: 1px solid rgba(255, 255, 255, .16) !important;
+}
+
+/* 次级按钮（如「载入示例 JD」） */
+button[data-testid="stBaseButton-secondary"],
+button[kind="secondary"],
+button[data-testid="baseButton-secondary"] {
+    background-color: #21262D !important;
+    color: #E6EDF3 !important;
+    border: 1px solid rgba(255, 255, 255, .16) !important;
+}
+
+/* 展开面板（侧边栏「LLM 配置」等） */
+div[data-testid="stExpander"] details,
+div[data-testid="stExpander"] summary {
+    background-color: #0D1117 !important;
+    color: #E6EDF3 !important;
+    border-color: rgba(255, 255, 255, .12) !important;
+}
+
+/* 侧边栏内的所有文字 */
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] span,
+section[data-testid="stSidebar"] div[data-testid="stMarkdownContainer"] {
+    color: #E6EDF3;
+}
